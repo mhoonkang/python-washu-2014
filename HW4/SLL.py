@@ -104,8 +104,8 @@ class LinkedList:
       counter = 0
       node_number = 1
       while node_number <= i:
-          if current_node.value == value: # if so, remove the node is removed
-              self.removeNode(node_number)# by using removeNode function
+          if current_node.value == value: # if so, the specified node is removed
+              self.removeNode(node_number)# by using removeNode function.
           if current_node.value == value: # However, this method is limited in the case when next node also has the same value because
              counter += 1                 # removing node is done through replacing the node with the next node.
           i = self.length()               # So, there still remains the values we want to delete.  
