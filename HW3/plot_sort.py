@@ -17,10 +17,10 @@ def sort_sim(n, iter): # n is the number of elements in the list, iter is the nu
     T0 = timeit.Timer('mergesort(%s)'% unsorted, 'from __main__ import mergesort') # set timer for mergesort
     T1 = timeit.Timer('bubblesort(%s)'% unsorted, 'from __main__ import bubblesort') # set timer for bubblesort
     T2 = timeit.Timer('quicksort(%s)' % unsorted, 'from __main__ import quicksort') # set timer for quicksort
-    tm.append(T0.timeit(number=1)) # record consumed time for excuting mergesort 
-    tb.append(T1.timeit(number=1)) # record consumed time for excuting bubblesort
-    tq.append(T2.timeit(number=1)) # record consumed time for excuting quicksort 
-  return [sum(tm), sum(tb), sum(tq)] # return total time for each sorting method
+    tm.append(T0.timeit(number=1)) # append consumed time for excuting mergesort 
+    tb.append(T1.timeit(number=1)) # append consumed time for excuting bubblesort
+    tq.append(T2.timeit(number=1)) # append consumed time for excuting quicksort 
+  return [sum(tm)/iter, sum(tb)/iter, sum(tq)/iter] # return average time for each sorting method
 
 # plot graphs for average time consumed for each sort method from size 1 to n by iterating 'iter' times
 def plot(n=500, iter=10):
@@ -28,15 +28,12 @@ def plot(n=500, iter=10):
   time_bubble = [] # list where average times consumed in bubble sort from size 1 to n to be stored
   time_quick = [] # list where average times consumed in quick sort from size 1 to n to be stored
   for i in range(1,n+1): # for size n data
-    mtime = sort_sim(i, iter)[0] # total time for merge sort
-    btime = sort_sim(i, iter)[1] # total time for bubble sort    
-    qtime = sort_sim(i, iter)[2] # total time for quick sort    
-    time_m = mtime/iter # then record the average time
-    time_b = btime/iter
-    time_q = qtime/iter
-    time_merge.append(time_m) # append average time to the list
-    time_bubble.append(time_b)  
-    time_quick.append(time_q)  
+    mtime = sort_sim(i, iter)[0] # average time for merge sort
+    btime = sort_sim(i, iter)[1] # average time for bubble sort    
+    qtime = sort_sim(i, iter)[2] # average time for quick sort    
+    time_merge.append(mtime) # append average time to the list
+    time_bubble.append(btime)  
+    time_quick.append(qtime)  
   plt.rcParams['legend.loc'] = 'best' # locate the legend to best location
   plt.plot(range(1,n+1), time_merge, label = "merge sort") # plot for merge sort
   plt.plot(range(1,n+1), time_bubble, label = "bubble sort") # plot for bubble sort
