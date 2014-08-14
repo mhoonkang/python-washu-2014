@@ -23,10 +23,10 @@ def plot(n=500, iter=10):
   time_merge = [] # list of average times consumed in merge sort from size 1 to n
   time_bubble = [] # list of average times consumed in bubble sort from size 1 to n
   time_quick = [] # list of average times consumed in quick sort from size 1 to n
-  for i in range(n): # for size n data
-    mtime = sort_sim(n, iter)[0] # total time for merge sort
-    btime = sort_sim(n, iter)[1] # total time for bubble sort    
-    qtime = sort_sim(n, iter)[2] # total time for quick sort    
+  for i in range(1,n+1): # for size n data
+    mtime = sort_sim(i, iter)[0] # total time for merge sort
+    btime = sort_sim(i, iter)[1] # total time for bubble sort    
+    qtime = sort_sim(i, iter)[2] # total time for quick sort    
     time_m = mtime/iter # then record the average time
     time_b = btime/iter
     time_q = qtime/iter
@@ -41,3 +41,5 @@ def plot(n=500, iter=10):
   plt.ylabel("average times in seconds") # y-axis label
   plt.legend() # add legend
   plt.savefig('plot.png')  # save the figure
+
+plot()
