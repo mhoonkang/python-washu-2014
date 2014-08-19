@@ -82,6 +82,7 @@ while True:
   if soup.find("a", attrs={"class":"blog-pager-older-link"}) == None: break # When there is no link to older posts, then this loop is broken.
   next = soup.find("a", attrs={"class":"blog-pager-older-link"})["href"] # Find new link to older posts
   page_to_scrape = next # Replace the current web page with the new link to older posts.
+                        # So, it sorts the posts chronologically.
   time.sleep(2) # good citizenship rule :)
   
 readFile.close()
