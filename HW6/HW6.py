@@ -34,6 +34,7 @@ for f in Adam_friends:
 print "The most followed user(s) is(are) {0}. ({1} followers)".format(mostguy, best)
 
 # the most followed user that has at most 2 degrees of separation from the target
+print "Now in process..."
 for f in Adam_friends: #followers of the target
   try: 
     second_follower = api.followers_ids(f)
@@ -101,6 +102,7 @@ for f in Adam_friends:
   	  print "Now in process..."
 
 #Find the most active user that has 2 degrees of separation from the target
+print "Now in process..."
 for f in Adam_friends: #followers of the target
   try: 
     second_follower = api.followers_ids(f) # the users that follow the follower of the target
@@ -108,16 +110,16 @@ for f in Adam_friends: #followers of the target
       for ff in second_follower: 
   	      user_info = api.get_user(ff)
   	      statuses_count = user_info.statuses_count
-          account_created_at = user_info.created_at
-          days = today - account_created_at
-          tweet_per_day = statuses_count/float(days.days)
-          if best < tweet_per_day: #the initial value of 'best' is the number of tweet per day for the most active user that follows the target
-             best = tweet_per_day
-             mostguy = user_info.name
-          elif best == tweet_per_day:#just in case that there are more than one most active users.
-             mostguy = mostguy + ", " + user_info.name
-          else:
-             pass
+  	      account_created_at = user_info.created_at
+  	      days = today - account_created_at
+  	      tweet_per_day = statuses_count/float(days.days)
+  	      if best < tweet_per_day: #the initial value of 'best' is the number of tweet per day for the most active user that follows the target
+  	         best = tweet_per_day
+  	         mostguy = user_info.name
+  	      elif best == tweet_per_day:#just in case that there are more than one most active users.
+  	         mostguy = mostguy + ", " + user_info.name
+  	      else:
+  	         pass
     except tweepy.TweepError:
       print "Waiting for rate limit reset" 
       rate_info = api.rate_limit_status()['resources']
