@@ -163,8 +163,8 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 
-auth = tweepy.OAuthHandler('By6KdPmUV4atHGAbNtVy9DtPR', 'fkPPejhOjiLU09BJH9OQSLocLC6Ogqic3SRlGL27wgVrIahOVS')
-auth.set_access_token('193507730-BSOYVvb7m6ApbAp8Xj6RvRy4ukuxDfZSMPhLr3Of', 'wXctrLirpAPiuZZEekJieRem4oUvRX11YmR25OV3xZ9T5')    
+auth = tweepy.OAuthHandler('', '')
+auth.set_access_token('', '')    
 api = tweepy.API(auth)
 
 # The following code will store all the information that we need for our purpose into SQL database.
